@@ -111,7 +111,7 @@ def build_compare_view(page: ft.Page, compare_service) -> ft.Control:
                         # 좌측 바 (우에서 좌로)
                         ft.Column([
                             ft.Row([
-                                ft.Text(f"{lv_:.4f}", color=lc, size=12,
+                                ft.Text(f"{lv_:.2f}", color=lc, size=12,
                                         weight=ft.FontWeight.W_600),
                                 ft.ProgressBar(value=lp, bgcolor="#252d3f", color=lc,
                                                height=8, border_radius=4, expand=True),
@@ -123,7 +123,7 @@ def build_compare_view(page: ft.Page, compare_service) -> ft.Control:
                             ft.Row([
                                 ft.ProgressBar(value=rp, bgcolor="#252d3f", color=rc,
                                                height=8, border_radius=4, expand=True),
-                                ft.Text(f"{rv_:.4f}", color=rc, size=12,
+                                ft.Text(f"{rv_:.2f}", color=rc, size=12,
                                         weight=ft.FontWeight.W_600),
                             ], spacing=6, vertical_alignment=ft.CrossAxisAlignment.CENTER),
                         ], expand=True),

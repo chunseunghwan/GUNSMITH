@@ -38,7 +38,7 @@ def _recoil_bar(label, value, max_val=12.0):
     return ft.Column([
         ft.Row([
             ft.Text(label, color=DIM, size=11, width=130),
-            ft.Text(f"{v:.4f}", color=TEXT, size=11),
+            ft.Text(f"{v:.2f}", color=TEXT, size=11),
         ], spacing=6),
         ft.ProgressBar(value=pct, bgcolor="#252d3f", color="#ff6b6b", height=5, border_radius=3),
     ], spacing=2)
@@ -148,7 +148,7 @@ def build_weapon_view(page: ft.Page, weapon_service) -> ft.Control:
                             _label("탄속",       w.get('bullet_speed', '-'), ' m/s'),
                         ], expand=True, spacing=6),
                         ft.Column([
-                            _label("연사속도",  w.get('fire_speed', '-'), ' RPM'),
+                            _label("연사속도",  f"{float(w['fire_speed']):.2f}" if w.get('fire_speed') is not None else '-', ' RPM'),
                             _label("총기 종류", w.get('gun_type', '-')),
                         ], expand=True, spacing=6),
                     ]),
@@ -175,10 +175,10 @@ def build_weapon_view(page: ft.Page, weapon_service) -> ft.Control:
                     ], spacing=20),
                     ft.Row([
                         ft.Text("앉아쏴 배율:", color=DIM, size=11),
-                        ft.Text(f"×{r.get('crouch_modifier', '-')}", color=TEXT, size=11),
+                        ft.Text(f"×{float(r['crouch_modifier']):.2f}" if r.get('crouch_modifier') is not None else '×-', color=TEXT, size=11),
                         ft.Container(width=20),
                         ft.Text("엎드려쏴 배율:", color=DIM, size=11),
-                        ft.Text(f"×{r.get('prone_modifier', '-')}", color=TEXT, size=11),
+                        ft.Text(f"×{float(r['prone_modifier']):.2f}" if r.get('prone_modifier') is not None else '×-', color=TEXT, size=11),
                     ], spacing=4),
                 ], spacing=10),
                 bgcolor=CARD2, padding=14, border_radius=10,

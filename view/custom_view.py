@@ -63,19 +63,19 @@ def build_custom_view(page: ft.Page, custom_service, weapon_service) -> ft.Contr
             fv = float(r.get(final_key) or 0)
             diff = fv - bv
             if diff < -0.001:
-                diff_text = f"  ▼ {abs(diff):.4f}"
+                diff_text = f"  ▼ {abs(diff):.2f}"
                 dc = GREEN
             elif diff > 0.001:
-                diff_text = f"  ▲ {abs(diff):.4f}"
+                diff_text = f"  ▲ {abs(diff):.2f}"
                 dc = RED
             else:
                 diff_text = "  —"
                 dc = DIM
             return ft.Row([
                 ft.Text(label, color=DIM, size=12, width=110),
-                ft.Text(f"{bv:.4f}", color=DIM, size=12, width=55),
+                ft.Text(f"{bv:.2f}", color=DIM, size=12, width=55),
                 ft.Text("→", color=DIM, size=11, width=18),
-                ft.Text(f"{fv:.4f}", color=TEXT, size=12, weight=ft.FontWeight.W_600, width=55),
+                ft.Text(f"{fv:.2f}", color=TEXT, size=12, weight=ft.FontWeight.W_600, width=55),
                 ft.Text(diff_text, color=dc, size=11),
             ])
 

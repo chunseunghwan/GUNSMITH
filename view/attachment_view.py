@@ -79,9 +79,9 @@ def build_attachment_view(page: ft.Page, attachment_service) -> ft.Control:
             if v == 0:
                 c, sym = DIM, '  —'
             elif v < 0:
-                c, sym = '#66BB6A', f'  ▼ {abs(v):.4f}  (감소↓)'
+                c, sym = '#66BB6A', f'  ▼ {abs(v):.2f}  (감소↓)'
             else:
-                c, sym = '#ff5252', f'  ▲ {v:.4f}  (증가↑)'
+                c, sym = '#ff5252', f'  ▲ {v:.2f}  (증가↑)'
             return ft.Row([
                 ft.Text(label, color=DIM, size=12, width=160),
                 ft.Text(sym, color=c, size=12),
