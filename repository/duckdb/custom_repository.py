@@ -133,7 +133,7 @@ class WeaponQueryRepository(IWeaponQueryRepository):
         """WEAPON LEFT JOIN WEAPON_RECOIL — 전체 총기 + 안정성 등급"""
         return self.db.q("""
             SELECT w.weapon_id, w.weapon_name, w.gun_type, w.bullet_type,
-                   w.damage, w.fire_speed, w.is_custom, w.image_path,
+                   w.damage, w.fire_speed, w.is_custom, w.image_data,
                    r.stability_score, r.stability_grade
             FROM WEAPON w
             LEFT JOIN WEAPON_RECOIL r ON w.weapon_id = r.weapon_id
@@ -143,7 +143,7 @@ class WeaponQueryRepository(IWeaponQueryRepository):
     def find_weapons_by_type(self, gun_type: str) -> pd.DataFrame:
         return self.db.q("""
             SELECT w.weapon_id, w.weapon_name, w.gun_type, w.bullet_type,
-                   w.damage, w.fire_speed, w.is_custom, w.image_path,
+                   w.damage, w.fire_speed, w.is_custom, w.image_data,
                    r.stability_score, r.stability_grade
             FROM WEAPON w
             LEFT JOIN WEAPON_RECOIL r ON w.weapon_id = r.weapon_id
@@ -156,7 +156,7 @@ class WeaponQueryRepository(IWeaponQueryRepository):
         df = self.db.q("""
             SELECT w.weapon_id, w.weapon_name, w.gun_type, w.bullet_type,
                    w.damage, w.bullet_speed, w.fire_speed, w.description,
-                   w.is_custom, w.image_path,
+                   w.is_custom, w.image_data,
                    r.recoil_vertical, r.recoil_horizontal, r.pattern_scale,
                    r.first_recoil, r.crouch_modifier, r.prone_modifier,
                    r.muzzle_rise, r.muzzle_shake, r.recovery_recoil,
@@ -169,7 +169,7 @@ class WeaponQueryRepository(IWeaponQueryRepository):
             return {}
         row = df.iloc[0].to_dict()
         weapon_cols = ['weapon_id','weapon_name','gun_type','bullet_type','damage',
-                       'bullet_speed','fire_speed','description','is_custom','image_path']
+                       'bullet_speed','fire_speed','description','is_custom','image_data']
         recoil_cols = ['recoil_vertical','recoil_horizontal','pattern_scale','first_recoil',
                        'crouch_modifier','prone_modifier','muzzle_rise','muzzle_shake',
                        'recovery_recoil','vertical_speed','stability_score','stability_grade']
@@ -182,7 +182,7 @@ class WeaponQueryRepository(IWeaponQueryRepository):
         """3-way JOIN: WEAPON + WEAPON_ATTACHMENT_COMPAT + ATTACHMENT"""
         return self.db.q("""
             SELECT w.weapon_name,
-                   a.attachment_id, a.attachment_name, a.slot_type, a.image_path,
+                   a.attachment_id, a.attachment_name, a.slot_type, a.image_data,
                    c.control_recoil_vertical, c.control_recoil_horizontal,
                    c.control_muzzle_rise,     c.control_muzzle_shake,
                    c.mod_recovery_recoil,     c.control_first_recoil

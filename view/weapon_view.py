@@ -1,4 +1,11 @@
 import flet as ft
+import base64 as _b64
+
+def _img_bytes(data_uri: str) -> bytes:
+    if not data_uri:
+        return b''
+    part = data_uri.split(',', 1)
+    return _b64.b64decode(part[1] if len(part) == 2 else part[0])
 
 BG    = "#0d1117"
 CARD  = "#161b27"
@@ -39,8 +46,8 @@ def _recoil_bar(label, value, max_val=12.0):
 
 def build_weapon_view(page: ft.Page, weapon_service) -> ft.Control:
     list_col   = ft.Column(scroll=ft.ScrollMode.AUTO, expand=True, spacing=3)
-    detail_col = ft.Column(
-        scroll=ft.ScrollMode.AUTO, expand=True, spacing=8,
+    detail_col = ft.ListView(
+        expand=True, spacing=8, padding=0,
         controls=[ft.Text("← 좌측에서 총기를 클릭하면 상세 정보가 표시됩니다.", color=DIM, size=13)],
     )
 
@@ -62,7 +69,7 @@ def build_weapon_view(page: ft.Page, weapon_service) -> ft.Control:
                     ),
                     ft.Text(r['gun_type'] or '', color=ACCENT, size=11, width=48),
                     ft.Text(r['bullet_type'] or '', color=DIM, size=11, width=52),
-                    ft.Text(str(r['damage'] or '-'), color=RED, size=11, width=36,
+                    ft.Text(f"{float(r['damage']):.1f}" if r['damage'] is not None else '-', color=RED, size=11, width=36,
                             text_align=ft.TextAlign.RIGHT),
                     ft.Container(width=8),
                     _grade_chip(grade),
@@ -94,45 +101,39 @@ def build_weapon_view(page: ft.Page, weapon_service) -> ft.Control:
         gc = GRADE_COLOR.get(grade, DIM)
 
         img = ft.Image(
-            src=w.get('image_path', ''),
+            src=_img_bytes(w.get('image_data', '')),
             width=200, height=110, fit=ft.BoxFit.CONTAIN,
-            error_content=ft.Container(
-                width=200, height=110, bgcolor=CARD2, border_radius=8,
-                content=ft.Text(w['weapon_name'], color=ACCENT,
-                                text_align=ft.TextAlign.CENTER, size=14),
-                alignment=ft.Alignment.CENTER,
-            ),
         )
 
         detail_col.controls = [
             # 헤더 ─────────────────────────────────────
             ft.Container(
-                content=ft.Row([
-                    img,
-                    ft.Column([
-                        ft.Text(w['weapon_name'], color=ACCENT, size=22,
-                                weight=ft.FontWeight.BOLD),
-                        ft.Row([
-                            ft.Container(
-                                content=ft.Text(w.get('gun_type',''), color="#0d1117",
-                                                size=11, weight=ft.FontWeight.BOLD),
-                                bgcolor=ACCENT, padding=ft.Padding(left=0, right=0, top=0, bottom=0),
-                                border_radius=10,
-                            ),
-                            ft.Container(
-                                content=ft.Text(f"등급  {grade}", color="#0d1117",
-                                                size=12, weight=ft.FontWeight.BOLD),
-                                bgcolor=gc, padding=ft.Padding(left=0, right=0, top=0, bottom=0),
-                                border_radius=10,
+                content=ft.Column([
+                    ft.Row([
+                        img,
+                        ft.Column([
+                            ft.Text(w['weapon_name'], color=ACCENT, size=22,
+                                    weight=ft.FontWeight.BOLD),
+                            ft.Row([
+                                ft.Container(
+                                    content=ft.Text(w.get('gun_type',''), color="#0d1117",
+                                                    size=11, weight=ft.FontWeight.BOLD),
+                                    bgcolor=ACCENT, border_radius=10, padding=6,
+                                ),
+                                ft.Container(
+                                    content=ft.Text(f"등급  {grade}", color="#0d1117",
+                                                    size=12, weight=ft.FontWeight.BOLD),
+                                    bgcolor=gc, border_radius=10, padding=6,
+                                ),
+                            ], spacing=6),
+                            ft.Text(
+                                '✓ 파츠 커스텀 가능' if w.get('is_custom') else '✗ 파츠 커스텀 불가',
+                                color='#66BB6A' if w.get('is_custom') else RED, size=11,
                             ),
                         ], spacing=6),
-                        ft.Text(w.get('description',''), color=DIM, size=11, max_lines=3),
-                        ft.Text(
-                            '✓ 파츠 커스텀 가능' if w.get('is_custom') else '✗ 파츠 커스텀 불가',
-                            color='#66BB6A' if w.get('is_custom') else RED, size=11,
-                        ),
-                    ], spacing=6, expand=True),
-                ], spacing=14, vertical_alignment=ft.CrossAxisAlignment.START),
+                    ], spacing=14, vertical_alignment=ft.CrossAxisAlignment.START),
+                    ft.Text(w.get('description',''), color=DIM, size=11),
+                ], spacing=8),
                 bgcolor=CARD2, padding=14, border_radius=10,
             ),
 
@@ -143,7 +144,7 @@ def build_weapon_view(page: ft.Page, weapon_service) -> ft.Control:
                     ft.Row([
                         ft.Column([
                             _label("탄약 종류",   w.get('bullet_type', '-')),
-                            _label("발당 피해량", w.get('damage', '-'), ' dmg', RED),
+                            _label("발당 피해량", f"{float(w['damage']):.1f}" if w.get('damage') is not None else '-', ' dmg', RED),
                             _label("탄속",       w.get('bullet_speed', '-'), ' m/s'),
                         ], expand=True, spacing=6),
                         ft.Column([
@@ -206,7 +207,7 @@ def build_weapon_view(page: ft.Page, weapon_service) -> ft.Control:
                 bgcolor=CARD2, padding=14, border_radius=10,
             ),
         ]
-        detail_col.update()
+        page.update()
 
     # ── 필터 드롭다운 ─────────────────────────────────────────────
     type_dd = ft.Dropdown(

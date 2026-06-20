@@ -1,4 +1,11 @@
 import flet as ft
+import base64 as _b64
+
+def _img_bytes(data_uri):
+    if not data_uri:
+        return b''
+    part = data_uri.split(',', 1)
+    return _b64.b64decode(part[1] if len(part) == 2 else part[0])
 
 BG    = "#0d1117"
 CARD  = "#161b27"
@@ -23,8 +30,8 @@ SLOT_KR = {
 
 def build_attachment_view(page: ft.Page, attachment_service) -> ft.Control:
     list_col   = ft.Column(scroll=ft.ScrollMode.AUTO, expand=True, spacing=3)
-    detail_col = ft.Column(
-        scroll=ft.ScrollMode.AUTO, expand=True, spacing=8,
+    detail_col = ft.ListView(
+        expand=True, spacing=8, padding=0,
         controls=[ft.Text("← 파츠를 클릭하면 상세 정보가 표시됩니다.", color=DIM, size=13)],
     )
 
@@ -84,7 +91,7 @@ def build_attachment_view(page: ft.Page, attachment_service) -> ft.Control:
             ft.Container(
                 content=ft.Row([
                     ft.Image(
-                        src=r.get('image_path',''),
+                        src=_img_bytes(r.get('image_data', '')),
                         width=140, height=90, fit=ft.BoxFit.CONTAIN,
                         error_content=ft.Container(
                             width=140, height=90, bgcolor=CARD2, border_radius=8,
@@ -124,7 +131,7 @@ def build_attachment_view(page: ft.Page, attachment_service) -> ft.Control:
                 bgcolor=CARD2, padding=14, border_radius=10,
             ),
         ]
-        detail_col.update()
+        page.update()
 
     slot_dd = ft.Dropdown(
         value='전체',
@@ -161,6 +168,5 @@ def build_attachment_view(page: ft.Page, attachment_service) -> ft.Control:
         ),
         ft.Container(content=detail_col, expand=True, padding=20),
     ], expand=True)
-
 
 

@@ -42,11 +42,11 @@ class WeaponRepository(IWeaponRepository):
         for _, r in df.iterrows():
             self.db.run(
                 """UPDATE WEAPON SET weapon_name=?, gun_type=?, bullet_type=?, damage=?,
-                   bullet_speed=?, fire_speed=?, description=?, is_custom=?, image_path=?
+                   bullet_speed=?, fire_speed=?, description=?, is_custom=?, image_data=?
                    WHERE weapon_id=?""",
                 [r['weapon_name'], r['gun_type'], r['bullet_type'], r['damage'],
                  r['bullet_speed'], r['fire_speed'], r['description'], r['is_custom'],
-                 r['image_path'], r['weapon_id']]
+                 r['image_data'], r['weapon_id']]
             )
 
     def delete_by_id(self, weapon_id: int) -> bool:

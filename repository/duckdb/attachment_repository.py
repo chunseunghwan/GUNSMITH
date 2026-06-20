@@ -35,8 +35,8 @@ class AttachmentRepository(IAttachmentRepository):
     def update(self, df: pd.DataFrame):
         for _, r in df.iterrows():
             self.db.run(
-                "UPDATE ATTACHMENT SET attachment_name=?, slot_type=?, image_path=? WHERE attachment_id=?",
-                [r['attachment_name'], r['slot_type'], r['image_path'], r['attachment_id']]
+                "UPDATE ATTACHMENT SET attachment_name=?, slot_type=?, image_data=? WHERE attachment_id=?",
+                [r['attachment_name'], r['slot_type'], r['image_data'], r['attachment_id']]
             )
 
     def delete_by_id(self, attachment_id: int) -> bool:
@@ -71,7 +71,7 @@ class WeaponAttachmentCompatRepository(IWeaponAttachmentCompatRepository):
     def find_by_weapon_and_slot(self, weapon_id: int, slot_type: str) -> pd.DataFrame:
         """3-way JOIN: WEAPON + WEAPON_ATTACHMENT_COMPAT + ATTACHMENT"""
         return self.db.q("""
-            SELECT a.attachment_id, a.attachment_name, a.slot_type, a.image_path,
+            SELECT a.attachment_id, a.attachment_name, a.slot_type, a.image_data,
                    c.control_recoil_vertical, c.control_recoil_horizontal,
                    c.control_muzzle_rise, c.control_muzzle_shake,
                    c.mod_recovery_recoil, c.control_first_recoil
