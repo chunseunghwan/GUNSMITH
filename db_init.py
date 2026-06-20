@@ -359,6 +359,7 @@ def _insert_attachments(conn):
         '라이트 그립':           'img/attachment/라이트_그립.webp',
         '엄지그립':              'img/attachment/엄지그립.webp',
         '하프 그립':             'img/attachment/하프_그립.webp',
+        '틸티드 그립':           'img/attachment/틸티드_그립.webp',
         '레이저 사이트':         'img/attachment/레이저_사이트.webp',
         '대용량 탄창':           'img/attachment/대용량_탄창.webp',
         '퀵 드로우 탄창':        'img/attachment/퀵_드로우_탄창.webp',
