@@ -87,19 +87,18 @@ def build_attachment_view(page: ft.Page, attachment_service) -> ft.Control:
                 ft.Text(sym, color=c, size=12),
             ])
 
+        _img_data = r.get('image_data') or ''
+        _img_widget = ft.Image(
+            src=_img_bytes(_img_data),
+            width=140, height=90, fit=ft.BoxFit.CONTAIN,
+        ) if _img_data else ft.Container(width=140, height=90, bgcolor=CARD2, border_radius=8,
+            content=ft.Text(r['attachment_name'], color=sc,
+                            text_align=ft.TextAlign.CENTER, size=11),)
+
         detail_col.controls = [
             ft.Container(
                 content=ft.Row([
-                    ft.Image(
-                        src=_img_bytes(r.get('image_data', '')),
-                        width=140, height=90, fit=ft.BoxFit.CONTAIN,
-                        error_content=ft.Container(
-                            width=140, height=90, bgcolor=CARD2, border_radius=8,
-                            content=ft.Text(r['attachment_name'], color=sc,
-                                            text_align=ft.TextAlign.CENTER, size=11),
-                            alignment=ft.Alignment.CENTER,
-                        ),
-                    ),
+                    _img_widget,
                     ft.Column([
                         ft.Text(r['attachment_name'], color=TEXT, size=18,
                                 weight=ft.FontWeight.BOLD),

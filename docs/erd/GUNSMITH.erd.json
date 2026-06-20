@@ -1,0 +1,284 @@
+{
+  "version": "3.0.0",
+  "settings": {
+    "width": 2000,
+    "height": 1400,
+    "scrollTop": 0,
+    "scrollLeft": 0,
+    "zoomLevel": 1,
+    "show": {
+      "tableComment": true,
+      "columnComment": true,
+      "columnDataType": true,
+      "columnDefault": false,
+      "columnAutoIncrement": false,
+      "columnPrimaryKey": true,
+      "columnUnique": false,
+      "columnNotNull": true,
+      "relationship": true
+    },
+    "database": "MySQL",
+    "language": "GraphQL",
+    "tableNameCase": "UPPER_CASE",
+    "columnNameCase": "LOWER_CASE",
+    "bracketType": "none",
+    "relationshipDataTypeSync": true,
+    "relationshipOptimization": false,
+    "columnOrder": [
+      "columnType",
+      "columnName",
+      "dataType",
+      "notNull",
+      "unique",
+      "autoIncrement",
+      "default",
+      "comment"
+    ],
+    "pluginSerializationMap": {}
+  },
+  "doc": {
+    "tableIds": [
+      "table-weapon",
+      "table-weapon-recoil",
+      "table-attachment",
+      "table-compat",
+      "table-custom-config",
+      "table-recoil-result"
+    ],
+    "relationshipIds": [
+      "rel-1",
+      "rel-2",
+      "rel-3",
+      "rel-4",
+      "rel-5",
+      "rel-6",
+      "rel-7",
+      "rel-8",
+      "rel-9"
+    ],
+    "indexIds": [],
+    "memoIds": []
+  },
+  "collections": {
+    "tableEntities": {
+      "table-weapon": {
+        "id": "table-weapon",
+        "name": "WEAPON",
+        "comment": "총기 기본 스탯",
+        "columnIds": [
+          "w-1","w-2","w-3","w-4","w-5","w-6","w-7","w-8","w-9","w-10"
+        ],
+        "seqColumnIds": [
+          "w-1","w-2","w-3","w-4","w-5","w-6","w-7","w-8","w-9","w-10"
+        ],
+        "ui": { "x": 600, "y": 50, "zIndex": 1, "widthName": 120, "widthComment": 140, "color": "" }
+      },
+      "table-weapon-recoil": {
+        "id": "table-weapon-recoil",
+        "name": "WEAPON_RECOIL",
+        "comment": "총기 상세 반동 스탯",
+        "columnIds": [
+          "wr-1","wr-2","wr-3","wr-4","wr-5","wr-6","wr-7","wr-8","wr-9","wr-10","wr-11","wr-12","wr-13","wr-14"
+        ],
+        "seqColumnIds": [
+          "wr-1","wr-2","wr-3","wr-4","wr-5","wr-6","wr-7","wr-8","wr-9","wr-10","wr-11","wr-12","wr-13","wr-14"
+        ],
+        "ui": { "x": 1200, "y": 50, "zIndex": 2, "widthName": 160, "widthComment": 180, "color": "" }
+      },
+      "table-attachment": {
+        "id": "table-attachment",
+        "name": "ATTACHMENT",
+        "comment": "파츠 기본 정보",
+        "columnIds": [
+          "a-1","a-2","a-3","a-4","a-5","a-6","a-7","a-8","a-9","a-10"
+        ],
+        "seqColumnIds": [
+          "a-1","a-2","a-3","a-4","a-5","a-6","a-7","a-8","a-9","a-10"
+        ],
+        "ui": { "x": 50, "y": 50, "zIndex": 3, "widthName": 180, "widthComment": 180, "color": "" }
+      },
+      "table-compat": {
+        "id": "table-compat",
+        "name": "WEAPON_ATTACHMENT_COMPAT",
+        "comment": "총기별 파츠 호환 및 보정값",
+        "columnIds": [
+          "c-1","c-2","c-3","c-4","c-5","c-6","c-7","c-8","c-9"
+        ],
+        "seqColumnIds": [
+          "c-1","c-2","c-3","c-4","c-5","c-6","c-7","c-8","c-9"
+        ],
+        "ui": { "x": 600, "y": 550, "zIndex": 4, "widthName": 220, "widthComment": 200, "color": "" }
+      },
+      "table-custom-config": {
+        "id": "table-custom-config",
+        "name": "CUSTOM_CONFIG",
+        "comment": "사용자 커스텀 설정",
+        "columnIds": [
+          "cc-1","cc-2","cc-3","cc-4","cc-5","cc-6","cc-7","cc-8","cc-9","cc-10"
+        ],
+        "seqColumnIds": [
+          "cc-1","cc-2","cc-3","cc-4","cc-5","cc-6","cc-7","cc-8","cc-9","cc-10"
+        ],
+        "ui": { "x": 50, "y": 600, "zIndex": 5, "widthName": 140, "widthComment": 160, "color": "" }
+      },
+      "table-recoil-result": {
+        "id": "table-recoil-result",
+        "name": "RECOIL_RESULT",
+        "comment": "최종 반동 계산 결과",
+        "columnIds": [
+          "rr-1","rr-2","rr-3","rr-4","rr-5","rr-6","rr-7","rr-8","rr-9","rr-10"
+        ],
+        "seqColumnIds": [
+          "rr-1","rr-2","rr-3","rr-4","rr-5","rr-6","rr-7","rr-8","rr-9","rr-10"
+        ],
+        "ui": { "x": 1200, "y": 600, "zIndex": 6, "widthName": 180, "widthComment": 180, "color": "" }
+      }
+    },
+    "tableColumnEntities": {
+      "w-1":  { "id":"w-1",  "tableId":"table-weapon", "name":"weapon_id",    "comment":"총기 고유 ID",      "dataType":"INTEGER",     "default":"", "autoIncrement":true,  "primaryKey":true,  "unique":true,  "notNull":true,  "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-2":  { "id":"w-2",  "tableId":"table-weapon", "name":"weapon_name",  "comment":"총기 이름",         "dataType":"VARCHAR(50)",  "default":"", "autoIncrement":false, "primaryKey":false, "unique":true,  "notNull":true,  "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-3":  { "id":"w-3",  "tableId":"table-weapon", "name":"gun_type",     "comment":"총기 종류",         "dataType":"VARCHAR(10)",  "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-4":  { "id":"w-4",  "tableId":"table-weapon", "name":"bullet_type",  "comment":"탄약 종류",         "dataType":"VARCHAR(15)",  "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-5":  { "id":"w-5",  "tableId":"table-weapon", "name":"damage",       "comment":"발당 피해량",       "dataType":"FLOAT",        "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-6":  { "id":"w-6",  "tableId":"table-weapon", "name":"bullet_speed", "comment":"탄속(m/s)",         "dataType":"FLOAT",        "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-7":  { "id":"w-7",  "tableId":"table-weapon", "name":"fire_speed",   "comment":"연사속도(초/발)",   "dataType":"FLOAT",        "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-8":  { "id":"w-8",  "tableId":"table-weapon", "name":"description",  "comment":"총기 설명",         "dataType":"TEXT",         "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-9":  { "id":"w-9",  "tableId":"table-weapon", "name":"is_custom",    "comment":"파츠 커스텀 가능",  "dataType":"BOOLEAN",      "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+      "w-10": { "id":"w-10", "tableId":"table-weapon", "name":"image_data",   "comment":"이미지(base64)",    "dataType":"TEXT",         "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":120,"widthComment":140,"widthDataType":100} },
+
+      "wr-1":  { "id":"wr-1",  "tableId":"table-weapon-recoil", "name":"recoil_id",         "comment":"반동 기본키",         "dataType":"INTEGER", "default":"", "autoIncrement":true,  "primaryKey":true,  "unique":true,  "notNull":true,  "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-2":  { "id":"wr-2",  "tableId":"table-weapon-recoil", "name":"weapon_id",          "comment":"총기 FK",             "dataType":"INTEGER", "default":"", "autoIncrement":false, "primaryKey":false, "unique":true,  "notNull":true,  "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-3":  { "id":"wr-3",  "tableId":"table-weapon-recoil", "name":"recoil_vertical",    "comment":"기본 수직 반동",      "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-4":  { "id":"wr-4",  "tableId":"table-weapon-recoil", "name":"recoil_horizontal",  "comment":"기본 좌우 반동",      "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-5":  { "id":"wr-5",  "tableId":"table-weapon-recoil", "name":"pattern_scale",      "comment":"총구 흔들림 패턴",    "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-6":  { "id":"wr-6",  "tableId":"table-weapon-recoil", "name":"first_recoil",       "comment":"초탄 반동",           "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-7":  { "id":"wr-7",  "tableId":"table-weapon-recoil", "name":"crouch_modifier",    "comment":"앉아쏴 반동 배율",    "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-8":  { "id":"wr-8",  "tableId":"table-weapon-recoil", "name":"prone_modifier",     "comment":"엎드려쏴 반동 배율",  "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-9":  { "id":"wr-9",  "tableId":"table-weapon-recoil", "name":"muzzle_rise",        "comment":"총구 들림",           "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-10": { "id":"wr-10", "tableId":"table-weapon-recoil", "name":"muzzle_shake",       "comment":"총구 흔들림",         "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-11": { "id":"wr-11", "tableId":"table-weapon-recoil", "name":"recovery_recoil",    "comment":"반동 회복",           "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-12": { "id":"wr-12", "tableId":"table-weapon-recoil", "name":"vertical_speed",     "comment":"수직 반동 상승속도",  "dataType":"FLOAT",   "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-13": { "id":"wr-13", "tableId":"table-weapon-recoil", "name":"stability_score",    "comment":"안정성 점수(0~100)", "dataType":"INTEGER", "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+      "wr-14": { "id":"wr-14", "tableId":"table-weapon-recoil", "name":"stability_grade",    "comment":"안정성 등급(S/A/B/C)","dataType":"VARCHAR(1)","default":"","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":160,"widthComment":180,"widthDataType":100} },
+
+      "a-1":  { "id":"a-1",  "tableId":"table-attachment", "name":"attachment_id",             "comment":"파츠 고유 ID",       "dataType":"INTEGER",    "default":"", "autoIncrement":true,  "primaryKey":true,  "unique":true,  "notNull":true,  "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-2":  { "id":"a-2",  "tableId":"table-attachment", "name":"attachment_name",           "comment":"파츠 이름",          "dataType":"VARCHAR(60)", "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":true,  "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-3":  { "id":"a-3",  "tableId":"table-attachment", "name":"slot_type",                 "comment":"슬롯 타입",          "dataType":"VARCHAR(15)", "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-4":  { "id":"a-4",  "tableId":"table-attachment", "name":"image_data",                "comment":"이미지(base64)",     "dataType":"TEXT",        "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-5":  { "id":"a-5",  "tableId":"table-attachment", "name":"control_recoil_vertical",   "comment":"수직 반동 보정",     "dataType":"FLOAT",       "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-6":  { "id":"a-6",  "tableId":"table-attachment", "name":"control_recoil_horizontal", "comment":"좌우 반동 보정",     "dataType":"FLOAT",       "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-7":  { "id":"a-7",  "tableId":"table-attachment", "name":"control_muzzle_rise",       "comment":"총구 들림 보정",     "dataType":"FLOAT",       "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-8":  { "id":"a-8",  "tableId":"table-attachment", "name":"control_muzzle_shake",      "comment":"총구 흔들림 보정",   "dataType":"FLOAT",       "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-9":  { "id":"a-9",  "tableId":"table-attachment", "name":"mod_recovery_recoil",       "comment":"반동 회복 보정",     "dataType":"FLOAT",       "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "a-10": { "id":"a-10", "tableId":"table-attachment", "name":"control_first_recoil",      "comment":"초탄 반동 보정",     "dataType":"FLOAT",       "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+
+      "c-1": { "id":"c-1", "tableId":"table-compat", "name":"compat_id",                 "comment":"호환 ID",           "dataType":"INTEGER", "default":"", "autoIncrement":true,  "primaryKey":true,  "unique":true,  "notNull":true,  "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+      "c-2": { "id":"c-2", "tableId":"table-compat", "name":"weapon_id",                 "comment":"총기 FK",           "dataType":"INTEGER", "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":true,  "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+      "c-3": { "id":"c-3", "tableId":"table-compat", "name":"attachment_id",             "comment":"파츠 FK",           "dataType":"INTEGER", "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":true,  "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+      "c-4": { "id":"c-4", "tableId":"table-compat", "name":"control_recoil_vertical",   "comment":"수직 반동 보정값",  "dataType":"FLOAT",   "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+      "c-5": { "id":"c-5", "tableId":"table-compat", "name":"control_recoil_horizontal", "comment":"좌우 반동 보정값",  "dataType":"FLOAT",   "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+      "c-6": { "id":"c-6", "tableId":"table-compat", "name":"control_muzzle_rise",       "comment":"총구 들림 보정값",  "dataType":"FLOAT",   "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+      "c-7": { "id":"c-7", "tableId":"table-compat", "name":"control_muzzle_shake",      "comment":"총구 흔들림 보정값","dataType":"FLOAT",   "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+      "c-8": { "id":"c-8", "tableId":"table-compat", "name":"mod_recovery_recoil",       "comment":"반동 회복 보정값",  "dataType":"FLOAT",   "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+      "c-9": { "id":"c-9", "tableId":"table-compat", "name":"control_first_recoil",      "comment":"초탄 반동 보정값",  "dataType":"FLOAT",   "default":"0.0","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":220,"widthComment":200,"widthDataType":100} },
+
+      "cc-1":  { "id":"cc-1",  "tableId":"table-custom-config", "name":"config_id",   "comment":"커스텀 PK",        "dataType":"INTEGER",    "default":"", "autoIncrement":true,  "primaryKey":true,  "unique":true,  "notNull":true,  "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-2":  { "id":"cc-2",  "tableId":"table-custom-config", "name":"weapon_id",   "comment":"총기 FK",          "dataType":"INTEGER",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":true,  "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-3":  { "id":"cc-3",  "tableId":"table-custom-config", "name":"custom_name", "comment":"커스텀 이름",      "dataType":"VARCHAR(50)","default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-4":  { "id":"cc-4",  "tableId":"table-custom-config", "name":"muzzle_id",   "comment":"총구 파츠 FK",     "dataType":"INTEGER",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-5":  { "id":"cc-5",  "tableId":"table-custom-config", "name":"stock_id",    "comment":"개머리판 파츠 FK", "dataType":"INTEGER",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-6":  { "id":"cc-6",  "tableId":"table-custom-config", "name":"grip_id",     "comment":"손잡이 파츠 FK",   "dataType":"INTEGER",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-7":  { "id":"cc-7",  "tableId":"table-custom-config", "name":"magazine_id", "comment":"탄창 파츠 FK",     "dataType":"INTEGER",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-8":  { "id":"cc-8",  "tableId":"table-custom-config", "name":"scope_id",    "comment":"조준경 파츠 FK",   "dataType":"INTEGER",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-9":  { "id":"cc-9",  "tableId":"table-custom-config", "name":"foregrip_id", "comment":"전방손잡이 FK",    "dataType":"INTEGER",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+      "cc-10": { "id":"cc-10", "tableId":"table-custom-config", "name":"created_at",  "comment":"생성 시각",        "dataType":"TIMESTAMP",  "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":140,"widthComment":160,"widthDataType":100} },
+
+      "rr-1":  { "id":"rr-1",  "tableId":"table-recoil-result", "name":"result_id",               "comment":"결과 PK",           "dataType":"INTEGER",  "default":"", "autoIncrement":true,  "primaryKey":true,  "unique":true,  "notNull":true,  "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-2":  { "id":"rr-2",  "tableId":"table-recoil-result", "name":"config_id",               "comment":"커스텀 설정 FK",    "dataType":"INTEGER",  "default":"", "autoIncrement":false, "primaryKey":false, "unique":true,  "notNull":true,  "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-3":  { "id":"rr-3",  "tableId":"table-recoil-result", "name":"final_recoil_vertical",   "comment":"최종 수직 반동",    "dataType":"FLOAT",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-4":  { "id":"rr-4",  "tableId":"table-recoil-result", "name":"final_recoil_horizontal", "comment":"최종 좌우 반동",    "dataType":"FLOAT",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-5":  { "id":"rr-5",  "tableId":"table-recoil-result", "name":"final_muzzle_rise",       "comment":"최종 총구 들림",    "dataType":"FLOAT",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-6":  { "id":"rr-6",  "tableId":"table-recoil-result", "name":"final_muzzle_shake",      "comment":"최종 총구 흔들림",  "dataType":"FLOAT",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-7":  { "id":"rr-7",  "tableId":"table-recoil-result", "name":"final_first_shot_recoil", "comment":"최종 초탄 반동",    "dataType":"FLOAT",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-8":  { "id":"rr-8",  "tableId":"table-recoil-result", "name":"final_recoil_recovery",   "comment":"최종 반동 회복",    "dataType":"FLOAT",    "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-9":  { "id":"rr-9",  "tableId":"table-recoil-result", "name":"stability_score",         "comment":"안정성 점수(0~100)","dataType":"INTEGER",  "default":"", "autoIncrement":false, "primaryKey":false, "unique":false, "notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} },
+      "rr-10": { "id":"rr-10", "tableId":"table-recoil-result", "name":"stability_grade",         "comment":"안정성 등급(S/A/B/C)","dataType":"VARCHAR(1)","default":"","autoIncrement":false,"primaryKey":false,"unique":false,"notNull":false, "ui":{"widthName":180,"widthComment":180,"widthDataType":100} }
+    },
+    "relationshipEntities": {
+      "rel-1": {
+        "id": "rel-1",
+        "identification": true,
+        "relationshipType": "OneToOne",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-weapon", "columnIds": ["w-1"], "x": 0, "y": 0, "direction": "right" },
+        "end":   { "tableId": "table-weapon-recoil", "columnIds": ["wr-2"], "x": 0, "y": 0, "direction": "left" }
+      },
+      "rel-2": {
+        "id": "rel-2",
+        "identification": true,
+        "relationshipType": "OneToMany",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-weapon", "columnIds": ["w-1"], "x": 0, "y": 0, "direction": "bottom" },
+        "end":   { "tableId": "table-compat", "columnIds": ["c-2"], "x": 0, "y": 0, "direction": "top" }
+      },
+      "rel-3": {
+        "id": "rel-3",
+        "identification": true,
+        "relationshipType": "OneToMany",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-attachment", "columnIds": ["a-1"], "x": 0, "y": 0, "direction": "bottom" },
+        "end":   { "tableId": "table-compat", "columnIds": ["c-3"], "x": 0, "y": 0, "direction": "left" }
+      },
+      "rel-4": {
+        "id": "rel-4",
+        "identification": true,
+        "relationshipType": "OneToMany",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-weapon", "columnIds": ["w-1"], "x": 0, "y": 0, "direction": "bottom" },
+        "end":   { "tableId": "table-custom-config", "columnIds": ["cc-2"], "x": 0, "y": 0, "direction": "top" }
+      },
+      "rel-5": {
+        "id": "rel-5",
+        "identification": false,
+        "relationshipType": "OneToMany",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-attachment", "columnIds": ["a-1"], "x": 0, "y": 0, "direction": "right" },
+        "end":   { "tableId": "table-custom-config", "columnIds": ["cc-4"], "x": 0, "y": 0, "direction": "left" }
+      },
+      "rel-6": {
+        "id": "rel-6",
+        "identification": false,
+        "relationshipType": "OneToMany",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-attachment", "columnIds": ["a-1"], "x": 0, "y": 0, "direction": "right" },
+        "end":   { "tableId": "table-custom-config", "columnIds": ["cc-5"], "x": 0, "y": 0, "direction": "left" }
+      },
+      "rel-7": {
+        "id": "rel-7",
+        "identification": false,
+        "relationshipType": "OneToMany",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-attachment", "columnIds": ["a-1"], "x": 0, "y": 0, "direction": "right" },
+        "end":   { "tableId": "table-custom-config", "columnIds": ["cc-6"], "x": 0, "y": 0, "direction": "left" }
+      },
+      "rel-8": {
+        "id": "rel-8",
+        "identification": false,
+        "relationshipType": "OneToMany",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-attachment", "columnIds": ["a-1"], "x": 0, "y": 0, "direction": "right" },
+        "end":   { "tableId": "table-custom-config", "columnIds": ["cc-7"], "x": 0, "y": 0, "direction": "left" }
+      },
+      "rel-9": {
+        "id": "rel-9",
+        "identification": true,
+        "relationshipType": "OneToOne",
+        "startRelationshipType": "ZeroOne",
+        "start": { "tableId": "table-custom-config", "columnIds": ["cc-1"], "x": 0, "y": 0, "direction": "right" },
+        "end":   { "tableId": "table-recoil-result", "columnIds": ["rr-2"], "x": 0, "y": 0, "direction": "left" }
+      }
+    },
+    "indexEntities": {},
+    "memoEntities": {}
+  }
+}
