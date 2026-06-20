@@ -167,5 +167,3 @@ def build_attachment_view(page: ft.Page, attachment_service) -> ft.Control:
         ),
         ft.Container(content=detail_col, expand=True, padding=20),
     ], expand=True)
-
-
