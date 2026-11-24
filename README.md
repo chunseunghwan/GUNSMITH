@@ -10,3 +10,6 @@ Hibernate: insert into temp_log (created_at,device_id,value) values (?,?,?)
 Hibernate: insert into temp_log (created_at,device_id,value) values (?,?,?)
 2026-11-24T17:08:25.615+09:00  INFO 16344 --- [: spring-server] c.i.firstimbeter.config.MqttSubscriber   : saved lab/node3/temp = 67.0**
 
+opencode plugin add github:vercel/vercel-plugin
+
+##END SeungHwan CHEON addition
